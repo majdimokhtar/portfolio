@@ -47,18 +47,18 @@ const getIndicatorStyle = (index: number) => {
 
 <template>
   <div
-    class="w-full max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 px-0 !pt-0 gap-4 sm:gap-4 mt-24"
+    class="w-full max-w-7xl mx-auto flex flex-col lg:grid py-16 sm:py-24 lg:py-32 px-0 !pt-0 gap-4 sm:gap-4 mt-18"
   >
     <!-- Header -->
     <div class="">
       <div class="">
         <h2
-          class="text-pretty tracking-tight text-gray-900 dark:text-white text-left text-xl sm:text-xl lg:text-2xl font-medium"
+          class="text-pretty tracking-tight text-stone-900 dark:text-white text-left text-xl sm:text-xl lg:text-2xl font-medium"
         >
           {{ page.faq.title }}
         </h2>
         <div
-          class="text-balance text-left mt-2 text-sm sm:text-md lg:text-sm text-gray-600 dark:text-gray-400"
+          class="text-balance text-left mt-2 text-sm sm:text-md lg:text-sm text-stone-600 dark:text-stone-400"
         >
           {{ page.faq.description }}
         </div>
@@ -83,11 +83,11 @@ const getIndicatorStyle = (index: number) => {
           v-for="(item, index) in items"
           :key="index"
           @click="activeTab = index"
-          class="group relative inline-flex items-center min-w-0 hover:text-gray-900 dark:hover:text-white font-medium disabled:cursor-not-allowed disabled:opacity-75 transition-colors justify-center text-sm gap-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 px-3 py-2 rounded-lg hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50"
+          class="group relative inline-flex items-center min-w-0 hover:text-stone-900 dark:hover:text-white font-medium disabled:cursor-not-allowed disabled:opacity-75 transition-colors justify-center text-sm gap-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 px-3 py-2 rounded-lg hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50"
           :class="[
             activeTab === index
-              ? 'text-gray-900 dark:text-white'
-              : 'text-gray-600 dark:text-gray-400',
+              ? 'text-stone-900 dark:text-white'
+              : 'text-stone-600 dark:text-stone-400',
           ]"
           :aria-selected="activeTab === index"
           role="tab"
@@ -116,7 +116,7 @@ const getIndicatorStyle = (index: number) => {
               type="button"
               @click="toggleAccordion(tabIndex, questionIndex)"
               :aria-expanded="isAccordionOpen(tabIndex, questionIndex)"
-              class="accordion-trigger w-full flex items-center justify-between gap-4 font-medium py-4 px-4 text-base mb-2 rounded-lg bg-neutral-100/60 dark:bg-neutral-800/60 hover:bg-neutral-200/50 dark:hover:bg-neutral-700/50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-left text-gray-900 dark:text-white group"
+              class="accordion-trigger w-full flex items-center justify-between gap-4 font-medium py-4 px-4 text-base mb-2 rounded-lg bg-neutral-100/60 dark:bg-neutral-800/60 hover:bg-neutral-200/50 dark:hover:bg-neutral-700/50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-left text-stone-900 dark:text-white group"
             >
               <span>{{ question.label }}</span>
               <svg
@@ -129,7 +129,7 @@ const getIndicatorStyle = (index: number) => {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="accordion-icon flex-shrink-0 w-5 h-5 text-gray-600 dark:text-gray-400 transition-transform duration-300 ease-out"
+                class="accordion-icon flex-shrink-0 w-5 h-5 text-stone-600 dark:text-stone-400 transition-transform duration-300 ease-out"
                 :class="[
                   isAccordionOpen(tabIndex, questionIndex)
                     ? 'rotate-45'
@@ -152,7 +152,7 @@ const getIndicatorStyle = (index: number) => {
               role="region"
             >
               <div class="accordion-inner">
-                <div class="pb-3.5 text-base text-gray-600 dark:text-gray-400">
+                <div class="pb-3.5 text-base text-stone-600 dark:text-stone-400">
                   <div class="px-4">
                     {{ question.content }}
                   </div>

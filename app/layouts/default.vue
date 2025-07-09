@@ -3,7 +3,7 @@
 
 <template>
   <div>
-    <div class="max-w-4xl mx-auto sm:border-x border-neutral-200 dark:border-neutral-700 pt-10">
+    <div class="max-w-5xl mx-auto sm:border-x border-neutral-200 dark:border-neutral-700 pt-10">
       <AppHeader :links="navLinks" />
       <slot />
       <AppFooter />

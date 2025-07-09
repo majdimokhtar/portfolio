@@ -18,6 +18,15 @@ export default defineNuxtConfig({
     "vue3-carousel-nuxt",
     "nuxt-og-image",
     "motion-v/nuxt",
+    [
+      "@nuxtjs/color-mode",
+      {
+        classSuffix: "",
+        preference: "system",
+        fallback: "light",
+        storageKey: "nuxt-color-mode",
+      },
+    ],
   ],
 
   devtools: {

@@ -1,2 +1,19 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 15px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}

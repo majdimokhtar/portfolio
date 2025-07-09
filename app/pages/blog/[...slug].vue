@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { NuxtLink } from "#components";
 import type { ContentNavigationItem } from "@nuxt/content";
 import {
   findPageBreadcrumb,
@@ -69,12 +70,12 @@ const formatDate = (dateString: Date) => {
 </script>
 
 <template>
-  <main class="mt-20 px-8">
+  <main class="px-18 my-24">
     <div class="container mx-auto relative min-h-screen">
       <div v-if="page" class="prose prose-lg max-w-none">
-        <a
-          href="/blog"
-          class="text-sm flex items-center gap-1 no-underline hover:underline"
+        <NuxtLink
+          to="/blog"
+          class="text-sm flex items-center gap-1 no-underline hover:underline text-stone-900 dark:text-stone-50"
         >
           <svg
             class="w-4 h-4"
@@ -90,10 +91,10 @@ const formatDate = (dateString: Date) => {
             />
           </svg>
           Blog
-        </a>
+        </NuxtLink>
         <div class="flex flex-col gap-3 mt-8">
           <div
-            class="flex text-xs text-base-content/60 items-center justify-center gap-2"
+            class="flex text-xs text-stone-900 dark:text-stone-50 items-center justify-center gap-2"
           >
             <span v-if="page.date">
               {{ formatDate(page.date) }}
@@ -106,10 +107,14 @@ const formatDate = (dateString: Date) => {
             :alt="page.title"
             class="rounded-lg w-full h-[300px] object-cover object-center"
           />
-          <h1 class="text-4xl text-center font-medium max-w-3xl mx-auto mt-4">
+          <h1
+            class="text-4xl text-center font-medium max-w-3xl mx-auto mt-4 text-stone-900 dark:text-stone-50"
+          >
             {{ page.title }}
           </h1>
-          <p class="text-base-content/60 text-center max-w-2xl mx-auto">
+          <p
+            class="text-stone-900 dark:text-stone-50 text-center max-w-2xl mx-auto"
+          >
             {{ page.description }}
           </p>
           <div class="flex items-center justify-center gap-2 mt-2">
@@ -117,7 +122,7 @@ const formatDate = (dateString: Date) => {
             <div class="flex flex-col items-center text-center gap-2 my-4">
               <div class="avatar">
                 <div
-                  class="w-12 rounded-full ring ring-neutral ring-offset-base-100 ring-offset-2"
+                  class="w-12 rounded-full ring ring-neutral ring-offset-base-100 ring-offset-2 not-prose"
                 >
                   <img
                     v-if="page.author?.avatar"
@@ -128,18 +133,20 @@ const formatDate = (dateString: Date) => {
               </div>
               <div class="flex flex-col items-center">
                 <div class="font-medium text-sm">{{ page.author.name }}</div>
-                <div class="text-xs text-base-content/60">
+                <div class="text-xs text-stone-900 dark:text-stone-50">
                   {{ (page.author as any).role }}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="max-w-3xl mx-auto">
-          <ContentRenderer v-if="page.body" :value="page" />
+        <div class="max-w-3xl mx-auto text-stone-900 dark:text-stone-50">
+          <div class="prose prose-lg max-w-none content-colors">
+            <ContentRenderer v-if="page.body" :value="page" />
+          </div>
 
           <div
-            class="flex items-center justify-end gap-2 text-sm text-base-content/60"
+            class="flex items-center justify-end gap-2 text-sm text-stone-900 dark:text-stone-50"
           >
             <button
               class="btn btn-ghost btn-sm"
@@ -150,9 +157,137 @@ const formatDate = (dateString: Date) => {
               Copy link
             </button>
           </div>
-          <ContentSurround :surround />
+
+          <!-- Custom ContentSurround replacement -->
+          <div
+            v-if="surround && (surround[0] || surround[1])"
+            class="mt-12 pt-8 border-t border-stone-200 dark:border-stone-700"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Previous Post -->
+              <div v-if="surround[0]" class="flex">
+                <NuxtLink
+                  :to="`${surround[0].path}`"
+                  class="group flex flex-col justify-between w-full p-6 rounded-lg border border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-600 transition-colors no-underline min-h-[120px]"
+                >
+                  <div>
+                    <div
+                      class="flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400 mb-3"
+                    >
+                      <svg
+                        class="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 19l-7-7 7-7"
+                        />
+                      </svg>
+                      Previous
+                    </div>
+                    <div
+                      class="text-base font-medium text-stone-900 dark:text-stone-50 group-hover:text-stone-700 dark:group-hover:text-stone-300 mb-2"
+                    >
+                      {{ surround[0].title }}
+                    </div>
+                  </div>
+                  <div
+                    v-if="surround[0].description"
+                    class="text-sm text-stone-600 dark:text-stone-400 line-clamp-2"
+                  >
+                    {{ surround[0].description }}
+                  </div>
+                </NuxtLink>
+              </div>
+
+              <!-- Empty space if no previous post -->
+              <div v-else class="hidden md:block"></div>
+
+              <!-- Next Post -->
+              <div v-if="surround[1]" class="flex">
+                <NuxtLink
+                  :to="`${surround[1].path}`"
+                  class="group flex flex-col justify-between w-full p-6 rounded-lg border border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-600 transition-colors no-underline text-right min-h-[120px]"
+                >
+                  <div>
+                    <div
+                      class="flex items-center justify-end gap-2 text-sm text-stone-500 dark:text-stone-400 mb-3"
+                    >
+                      Next
+                      <svg
+                        class="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="text-base font-medium text-stone-900 dark:text-stone-50 group-hover:text-stone-700 dark:group-hover:text-stone-300 mb-2"
+                    >
+                      {{ surround[1].title }}
+                    </div>
+                  </div>
+                  <div
+                    v-if="surround[1].description"
+                    class="text-sm text-stone-600 dark:text-stone-400 line-clamp-2"
+                  >
+                    {{ surround[1].description }}
+                  </div>
+                </NuxtLink>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 </template>
+
+<style>
+.content-colors {
+  --tw-prose-body: #1c1917;
+  --tw-prose-headings: #1c1917;
+  --tw-prose-links: #1c1917;
+  --tw-prose-bold: #1c1917;
+  --tw-prose-counters: #1c1917;
+  --tw-prose-bullets: #1c1917;
+  --tw-prose-hr: #1c1917;
+  --tw-prose-quotes: #1c1917;
+  --tw-prose-quote-borders: #1c1917;
+  --tw-prose-captions: #1c1917;
+  --tw-prose-code: #1c1917;
+  --tw-prose-pre-code: #1c1917;
+  --tw-prose-pre-bg: #f5f5f4;
+  --tw-prose-th-borders: #1c1917;
+  --tw-prose-td-borders: #1c1917;
+}
+
+.dark .content-colors {
+  --tw-prose-body: #fafaf9;
+  --tw-prose-headings: #fafaf9;
+  --tw-prose-links: #fafaf9;
+  --tw-prose-bold: #fafaf9;
+  --tw-prose-counters: #fafaf9;
+  --tw-prose-bullets: #fafaf9;
+  --tw-prose-hr: #fafaf9;
+  --tw-prose-quotes: #fafaf9;
+  --tw-prose-quote-borders: #fafaf9;
+  --tw-prose-captions: #fafaf9;
+  --tw-prose-code: #fafaf9;
+  --tw-prose-pre-code: #fafaf9;
+  --tw-prose-pre-bg: #292524;
+  --tw-prose-th-borders: #fafaf9;
+  --tw-prose-td-borders: #fafaf9;
+}
+</style>

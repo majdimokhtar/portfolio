@@ -22,13 +22,17 @@ useSeoMeta({
   <div v-if="page" class="py-16">
     <LandingHero :page />
     <section
-      class="pt-0 lg:grid lg:grid-cols-2 lg:gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      class="pt-0 lg:grid lg:grid-cols-2 lg:gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-14"
     >
       <LandingAbout :page />
       <LandingWorkExperience :page />
     </section>
-    <LandingBlog :page />
-    <!-- <LandingTestimonials :page /> -->
-    <LandingFAQ :page />
+    <section
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-14"
+    >
+      <LandingBlog :page />
+      <!-- <LandingTestimonials :page /> -->
+      <LandingFAQ :page />
+    </section>
   </div>
 </template>
