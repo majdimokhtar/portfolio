@@ -1,64 +1,98 @@
 <script setup lang="ts">
-const colorMode = useColorMode()
+const colorMode = useColorMode();
 
-const color = computed(() => colorMode.value === 'dark' ? '#020618' : 'white')
+const color = computed(() =>
+  colorMode.value === "dark" ? "#020618" : "white"
+);
 
 useHead({
   meta: [
-    { charset: 'utf-8' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { key: 'theme-color', name: 'theme-color', content: color }
+    { charset: "utf-8" },
+    { name: "viewport", content: "width=device-width, initial-scale=1" },
+    { key: "theme-color", name: "theme-color", content: color },
   ],
-  link: [
-    { rel: 'icon', href: '/favicon.ico' }
-  ],
+  link: [{ rel: "icon", href: "/favicon.ico" }],
   htmlAttrs: {
-    lang: 'en'
-  }
-})
+    lang: "en",
+  },
+});
 
 useSeoMeta({
-  titleTemplate: '%s - Nuxt Portfolio Template',
-  ogImage: 'https://assets.hub.nuxt.com/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJodHRwczovL3BvcnRmb2xpby10ZW1wbGF0ZS5udXh0LmRldiIsImlhdCI6MTc0NTkzNDczMX0.XDWnQoyVy3XVtKQD6PLQ8RFUwr4yr1QnVwPxRrjCrro.jpg?theme=light',
-  twitterImage: 'https://assets.hub.nuxt.com/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJodHRwczovL3BvcnRmb2xpby10ZW1wbGF0ZS5udXh0LmRldiIsImlhdCI6MTc0NTkzNDczMX0.XDWnQoyVy3XVtKQD6PLQ8RFUwr4yr1QnVwPxRrjCrro.jpg?theme=light',
-  twitterCard: 'summary_large_image'
-})
+  titleTemplate: "%s - Nuxt Portfolio Template",
+  ogImage:
+    "https://assets.hub.nuxt.com/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJodHRwczovL3BvcnRmb2xpby10ZW1wbGF0ZS5udXh0LmRldiIsImlhdCI6MTc0NTkzNDczMX0.XDWnQoyVy3XVtKQD6PLQ8RFUwr4yr1QnVwPxRrjCrro.jpg?theme=light",
+  twitterImage:
+    "https://assets.hub.nuxt.com/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJodHRwczovL3BvcnRmb2xpby10ZW1wbGF0ZS5udXh0LmRldiIsImlhdCI6MTc0NTkzNDczMX0.XDWnQoyVy3XVtKQD6PLQ8RFUwr4yr1QnVwPxRrjCrro.jpg?theme=light",
+  twitterCard: "summary_large_image",
+});
 
 const [{ data: navigation }, { data: files }] = await Promise.all([
-  useAsyncData('navigation', () => {
-    return Promise.all([
-      queryCollectionNavigation('blog')
-    ])
-  }, {
-    transform: data => data.flat()
-  }),
-  useLazyAsyncData('search', () => {
-    return Promise.all([
-      queryCollectionSearchSections('blog')
-    ])
-  }, {
-    server: false,
-    transform: data => data.flat()
-  })
-])
+  useAsyncData(
+    "navigation",
+    () => {
+      return Promise.all([queryCollectionNavigation("blog")]);
+    },
+    {
+      transform: (data) => data.flat(),
+    }
+  ),
+  useLazyAsyncData(
+    "search",
+    () => {
+      return Promise.all([queryCollectionSearchSections("blog")]);
+    },
+    {
+      server: false,
+      transform: (data) => data.flat(),
+    }
+  ),
+]);
 </script>
 
 <template>
-  <UApp>
+  <div
+    class="min-h-screen bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white"
+  >
     <NuxtLayout>
-      <UMain class="relative">
+      <main class="relative">
         <NuxtPage />
-      </UMain>
+      </main>
     </NuxtLayout>
 
     <ClientOnly>
-      <LazyUContentSearch
-        :files="files"
-        :navigation="navigation"
-        shortcut="meta_k"
-        :links="navLinks"
-        :fuse="{ resultLimit: 42 }"
-      />
+      <!-- Custom search component to replace LazyUContentSearch -->
+      <div
+        v-if="showSearch"
+        class="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 p-4"
+      >
+        <div
+          class="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-lg shadow-xl mt-20"
+        >
+          <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+            <input
+              v-model="searchQuery"
+              type="text"
+              placeholder="Search..."
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              @keydown.escape="showSearch = false"
+            />
+          </div>
+          <div class="max-h-96 overflow-y-auto">
+            <div
+              v-for="result in searchResults"
+              :key="result.id"
+              class="p-4 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer border-b border-gray-100 dark:border-gray-700"
+            >
+              <div class="font-medium text-gray-900 dark:text-white">
+                {{ result.title }}
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">
+                {{ result.description }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </ClientOnly>
-  </UApp>
+  </div>
 </template>

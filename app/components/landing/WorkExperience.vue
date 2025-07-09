@@ -1,21 +1,18 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content'
+import type { IndexCollectionItem } from "@nuxt/content";
 
 defineProps<{
-  page: IndexCollectionItem
-}>()
+  page: IndexCollectionItem;
+}>();
 </script>
 
 <template>
-  <UPageSection
-    :title="page.experience.title"
-    :ui="{
-      container: '!p-0 gap-4 sm:gap-4',
-      title: 'text-left text-xl sm:text-xl lg:text-2xl font-medium',
-      description: 'mt-2'
-    }"
-  >
-    <template #description>
+  <section class="gap-4 sm:gap-4">
+    <div class="text-left text-xl sm:text-xl lg:text-2xl font-medium">
+      {{ page.experience.title }}
+    </div>
+
+    <div class="mt-2">
       <div class="flex flex-col gap-2">
         <Motion
           v-for="(experience, index) in page.experience.items"
@@ -29,10 +26,10 @@ defineProps<{
           <p class="text-sm">
             {{ experience.date }}
           </p>
-          <USeparator />
-          <ULink
+          <div class="flex-1 border-t border-gray-200"></div>
+          <a
             class="flex items-center gap-1"
-            :to="experience.company.url"
+            :href="experience.company.url"
             target="_blank"
           >
             <span class="text-sm">
@@ -43,15 +40,13 @@ defineProps<{
               :style="{ color: experience.company.color }"
             >
               <span class="font-medium">{{ experience.company.name }}</span>
-              <UIcon :name="experience.company.logo" />
+              <i :class="experience.company.logo"></i>
             </div>
-          </ULink>
+          </a>
         </Motion>
       </div>
-    </template>
-  </UPageSection>
+    </div>
+  </section>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,191 +1,200 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content'
+import type { IndexCollectionItem } from "@nuxt/content";
 
-const { footer, global } = useAppConfig()
+const { footer, global } = useAppConfig();
 
 defineProps<{
-  page: IndexCollectionItem
-}>()
+  page: IndexCollectionItem;
+}>();
+
+const colorMode = useColorMode();
 </script>
 
 <template>
-  <UPageHero
-    :ui="{
-      headline: 'flex items-center justify-center',
-      title: 'text-shadow-md max-w-lg mx-auto',
-      links: 'mt-4 flex-col justify-center items-center'
-    }"
-  >
-    <template #headline>
-      <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.1
-        }"
-      >
-        <UColorModeAvatar
-          class="size-18 ring ring-default ring-offset-3 ring-offset-(--ui-bg)"
-          :light="global.picture?.light!"
-          :dark="global.picture?.dark!"
-          :alt="global.picture?.alt!"
-        />
-      </Motion>
-    </template>
-
-    <template #title>
-      <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.1
-        }"
-      >
-        {{ page.title }}
-      </Motion>
-    </template>
-
-    <template #description>
-      <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.3
-        }"
-      >
-        {{ page.description }}
-      </Motion>
-    </template>
-
-    <template #links>
-      <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.5
-        }"
-      >
-        <div
-          v-if="page.hero.links"
-          class="flex items-center gap-2"
-        >
-          <UButton v-bind="page.hero.links[0]" />
-          <UButton
-            :color="global.available ? 'success' : 'error'"
-            variant="ghost"
-            class="gap-2"
-            :to="global.available ? global.meetingLink : ''"
-            :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
-          >
-            <template #leading>
-              <span class="relative flex size-2">
-                <span
-                  class="absolute inline-flex size-full rounded-full opacity-75"
-                  :class="global.available ? 'bg-success animate-ping' : 'bg-error'"
-                />
-                <span
-                  class="relative inline-flex size-2 scale-90 rounded-full"
-                  :class="global.available ? 'bg-success' : 'bg-error'"
-                />
-              </span>
-            </template>
-          </UButton>
-        </div>
-      </Motion>
-
-      <div class="gap-x-4 inline-flex mt-4">
+  <div class="py-16 lg:py-24">
+    <!-- Hero Section -->
+    <div class="text-center">
+      <!-- Headline (Avatar) -->
+      <div class="flex items-center justify-center">
         <Motion
-          v-for="(link, index) of footer?.links"
-          :key="index"
-
           :initial="{
             scale: 1.1,
             opacity: 0,
-            filter: 'blur(20px)'
+            filter: 'blur(20px)',
           }"
           :animate="{
             scale: 1,
             opacity: 1,
-            filter: 'blur(0px)'
+            filter: 'blur(0px)',
           }"
           :transition="{
             duration: 0.6,
-            delay: 0.5 + index * 0.1
+            delay: 0.1,
           }"
         >
-          <UButton
-            v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
-          />
+          <div
+            class="w-18 h-18 rounded-full overflow-hidden ring-4 ring-gray-200 dark:ring-gray-700 ring-offset-4 ring-offset-white dark:ring-offset-gray-900"
+          >
+            <img
+              :src="
+                colorMode.value === 'dark'
+                  ? global.picture?.dark
+                  : global.picture?.light
+              "
+              :alt="global.picture?.alt"
+              class="w-full h-full object-cover"
+            />
+          </div>
         </Motion>
       </div>
-    </template>
 
-    <UPageMarquee
-      pause-on-hover
-      class="py-2 -mx-4 sm:-mx-6 lg:-mx-8 [--duration:40s]"
-    >
-      <Motion
-        v-for="(img, index) in page.hero.images"
-        :key="index"
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: index * 0.1
-        }"
-      >
-        <img
-          width="234"
-          height="234"
-          class="rounded-lg"
-          :class="index % 2 === 0 ? '-rotate-2' : 'rotate-2'"
-          v-bind="img"
+      <!-- Title -->
+      <div class="text-shadow-md max-w-lg mx-auto mt-8">
+        <Motion
+          :initial="{
+            scale: 1.1,
+            opacity: 0,
+            filter: 'blur(20px)',
+          }"
+          :animate="{
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)',
+          }"
+          :transition="{
+            duration: 0.6,
+            delay: 0.1,
+          }"
         >
-      </Motion>
-    </UPageMarquee>
-  </UPageHero>
+          <h1
+            class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white"
+          >
+            {{ page.title }}
+          </h1>
+        </Motion>
+      </div>
+
+      <!-- Description -->
+      <div class="mt-6 max-w-2xl mx-auto">
+        <Motion
+          :initial="{
+            scale: 1.1,
+            opacity: 0,
+            filter: 'blur(20px)',
+          }"
+          :animate="{
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)',
+          }"
+          :transition="{
+            duration: 0.6,
+            delay: 0.3,
+          }"
+        >
+          <p class="text-lg text-gray-600 dark:text-gray-400">
+            {{ page.description }}
+          </p>
+        </Motion>
+      </div>
+
+      <!-- Links -->
+      <div class="mt-4 flex flex-col justify-center items-center">
+        <Motion
+          :initial="{
+            scale: 1.1,
+            opacity: 0,
+            filter: 'blur(20px)',
+          }"
+          :animate="{
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)',
+          }"
+          :transition="{
+            duration: 0.6,
+            delay: 0.5,
+          }"
+        >
+          <div v-if="page.hero.links" class="flex items-center gap-2">
+            <NuxtLink
+              v-bind="page.hero.links[0]"
+              class="btn btn-primary btn-lg"
+            >
+              {{ page.hero.links[0]?.label || "Let's work together" }}
+            </NuxtLink>
+            <NuxtLink
+              :to="global.available ? global.meetingLink : ''"
+              class="btn btn-lg btn-ghost border-2 transition-colors duration-200"
+              :class="
+                global.available
+                  ? 'border-success text-success hover:border-success hover:text-success hover:bg-success/10'
+                  : 'border-error text-error hover:border-error hover:text-error hover:bg-error/10'
+              "
+            >
+              <span class="relative flex w-2 h-2">
+                <span
+                  class="absolute inline-flex w-full h-full rounded-full opacity-75"
+                  :class="
+                    global.available
+                      ? 'bg-green-500 animate-ping'
+                      : 'bg-red-500'
+                  "
+                />
+                <span
+                  class="relative inline-flex w-2 h-2 scale-90 rounded-full"
+                  :class="global.available ? 'bg-green-500' : 'bg-red-500'"
+                />
+              </span>
+              {{
+                global.available
+                  ? "Available for new projects"
+                  : "Not available at the moment"
+              }}
+            </NuxtLink>
+          </div>
+        </Motion>
+
+        <div class="gap-x-4 inline-flex mt-4">
+          <Motion
+            v-for="(link, index) of footer?.links"
+            :key="index"
+            :initial="{
+              scale: 1.1,
+              opacity: 0,
+              filter: 'blur(20px)',
+            }"
+            :animate="{
+              scale: 1,
+              opacity: 1,
+              filter: 'blur(0px)',
+            }"
+            :transition="{
+              duration: 0.6,
+              delay: 0.5 + index * 0.1,
+            }"
+          >
+            <NuxtLink v-bind="link" class="btn btn-sm btn-ghost">
+              {{ link.label }}
+              <Icon :name="link.icon" class="size-4" size="16" />
+            </NuxtLink>
+          </Motion>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marquee -->
+    <CarouselComponent />
+  </div>
 </template>
+
+<style scoped>
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+</style>
