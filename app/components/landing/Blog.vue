@@ -38,7 +38,7 @@ if (!posts.value) {
           <div class="flex-1 !px-0">
             <div class="space-y-2">
               <h3
-                class="font-medium text-lg group-hover:text-primary-content transition-colors"
+                class="font-medium text-lg text-stone-800 dark:text-stone-400 transition-colors"
               >
                 {{ post.title }}
               </h3>

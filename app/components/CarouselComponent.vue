@@ -59,7 +59,6 @@ import svgImage8 from "/svg-image-8.svg";
 import svgImage9 from "/svg-image-9.svg";
 import svgImage10 from "/svg-image-10.svg";
 import svgImage11 from "/svg-image-11.svg";
-import svgImage12 from "/svg-image-12.svg";
 import svgImage13 from "/svg-image-13.svg";
 
 // Logo data with inline SVGs
@@ -107,10 +106,6 @@ const logos = [
   {
     name: "Framer",
     src: svgImage11,
-  },
-  {
-    name: "Flutter",
-    src: svgImage12,
   },
   {
     name: "Node.js",

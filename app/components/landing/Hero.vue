@@ -176,7 +176,7 @@ const colorMode = useColorMode();
           >
             <NuxtLink v-bind="link" class="btn btn-sm btn-ghost">
               {{ link.label }}
-              <Icon :name="link.icon" class="size-4" size="16" />
+              <Icon :name="link.icon" class="size-4" size="20" />
             </NuxtLink>
           </Motion>
         </div>

@@ -30,31 +30,30 @@ hero:
 about:
   title: "About Me"
   description: |
-    As a Web Developer and front-end developer with 6 years of experience, I leverage my Tunisia University Interactive Design degree to craft user-centered digital experiences.
-    My approach blends creative strategy with technical expertise, transforming concepts into functional, purposeful digital products that seamlessly integrate design and technology.
+    I am a certified Full Stack JavaScript Developer from Tunisia 🇹🇳. I specialize in React, VueJs and NestJs development as well. I design, create and support websites and applications for clients and for fun. I love using modern technology to create exceptional user experiences, and always strive to create high quality products.
 experience:
   title: Work Experience
   items:
-    - position: "Brand Designer at"
-      date: "2023 - Present"
+    - position: "Web Developer at"
+      date: "2024 - Present"
       company:
-        name: Nuxt
+        name: Teratosoft
         logo: "i-simple-icons-nuxtdotjs"
-        url: "https://nuxt.com"
+        url: "https://ts-website.teratosoft.com"
         color: "#00DC82"
-    - position: "Assets Designer at"
-      date: "2022 - 2023"
+    - position: "Web Developer at"
+      date: "2023"
       company:
-        name: Raycast
+        name: Caustaza Group
         logo: "i-simple-icons-raycast"
-        url: "https://raycast.com"
+        url: ""
         color: "#FF6363"
-    - position: "Senior Web Developer at"
-      date: "2020 - 2021"
+    - position: "Project Manager at"
+      date: "2019 - 2021"
       company:
-        name: Linear
+        name: KL Promotion
         logo: "i-simple-icons-linear"
-        url: "https://linear.app"
+        url: "https://klpromotion-immo.com"
         color: "#5E6AD2"
 testimonials:
   - quote: "Emma's approach to UX design completely transformed our product. She has a rare ability to balance beautiful aesthetics with functional simplicity. The redesign not only looked better, but it reduced our customer support tickets by 40% and increased conversion rates across all key metrics."
