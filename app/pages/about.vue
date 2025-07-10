@@ -57,12 +57,12 @@ useSeoMeta({
       <div
         class="flex flex-row justify-center items-center py-10 space-x-[-2rem] mb-14"
       >
-        <PolaroidItem
+        <!-- <PolaroidItem
           v-for="(image, index) in page.images"
           :key="index"
           :image="image"
           :index
-        />
+        /> -->
       </div>
     </div>
   </div>
