@@ -119,7 +119,7 @@ const colorMode = useColorMode();
           <div v-if="page.hero.links" class="flex items-center gap-2">
             <NuxtLink
               v-bind="page.hero.links[0]"
-              class="btn btn-primary btn-lg"
+              class="btn btn-info btn-lg text-white"
             >
               {{ page.hero.links[0]?.label || "Let's work together" }}
             </NuxtLink>

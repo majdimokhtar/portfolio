@@ -1,8 +1,8 @@
 seo:
   title: "Majdi Mokhtar - Web Developer"
-  description: "Welcome to my portfolio! I'm Majdi Mokhtar, a Web Developer and front-end developer based in Boston. I specialize in creating user-centered digital experiences that are both beautiful and functional."
+  description: "Welcome to my portfolio! I'm Majdi Mokhtar, a Web Developer and front-end developer based in Tunisia. I specialize in creating user-centered digital experiences that are both beautiful and functional."
 title: "Hey, I'm Majdi Mokhtar Web Developer"
-description: "I craft intuitive digital experiences where design meets functionality. Based in Boston, bringing ideas to life through code and creativity."
+description: "I craft intuitive digital experiences where design meets functionality. Based in Tunisia, bringing ideas to life through code and creativity."
 hero:
   links:
     - label: "Let's work together"
@@ -30,7 +30,7 @@ hero:
 about:
   title: "About Me"
   description: |
-    As a Web Developer and front-end developer with 6 years of experience, I leverage my Boston University Interactive Design degree to craft user-centered digital experiences.
+    As a Web Developer and front-end developer with 6 years of experience, I leverage my Tunisia University Interactive Design degree to craft user-centered digital experiences.
     My approach blends creative strategy with technical expertise, transforming concepts into functional, purposeful digital products that seamlessly integrate design and technology.
 experience:
   title: Work Experience
@@ -117,4 +117,4 @@ faq:
             I love the challenge of solving complex problems through design and technology. It's incredibly rewarding to see people interact with something I've created and find it genuinely useful and easy to navigate. Bridging the gap between user needs and technical possibilities is what truly excites me.
         - label: What are your hobbies outside of work?
           content: |
-            When I'm not designing or coding, I enjoy exploring Boston's neighborhoods, trying out new coffee shops, and hiking in the nearby reservations. I'm also passionate about photography and occasionally contribute to open-source projects.
+            When I'm not designing or coding, I enjoy exploring Tunisia's neighborhoods, trying out new coffee shops, and hiking in the nearby reservations. I'm also passionate about photography and occasionally contribute to open-source projects.
