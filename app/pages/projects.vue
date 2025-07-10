@@ -1,63 +1,59 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('projects-page', () => {
-  return queryCollection('pages').path('/projects').first()
-})
+const { data: page } = await useAsyncData("projects-page", () => {
+  return queryCollection("pages").path("/projects").first();
+});
 if (!page.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: 'Page not found',
-    fatal: true
-  })
+    statusMessage: "Page not found",
+    fatal: true,
+  });
 }
 
-const { data: projects } = await useAsyncData('projects', () => {
-  return queryCollection('projects').all()
-})
+const { data: projects } = await useAsyncData("projects", () => {
+  return queryCollection("projects").all();
+});
 
-const { global } = useAppConfig()
+const { global } = useAppConfig();
 
 useSeoMeta({
   title: page.value?.seo?.title || page.value?.title,
   ogTitle: page.value?.seo?.title || page.value?.title,
   description: page.value?.seo?.description || page.value?.description,
-  ogDescription: page.value?.seo?.description || page.value?.description
-})
+  ogDescription: page.value?.seo?.description || page.value?.description,
+});
 </script>
 
 <template>
-  <UPage v-if="page">
-    <UPageHero
-      :title="page.title"
-      :description="page.description"
-      :links="page.links"
-      :ui="{
-        title: '!mx-0 text-left',
-        description: '!mx-0 text-left',
-        links: 'justify-start'
-      }"
-    >
-      <template #links>
-        <div
-          v-if="page.links"
-          class="flex items-center gap-2"
-        >
-          <UButton
-            :label="page.links[0]?.label"
-            :to="global.meetingLink"
+  <div v-if="page" class="min-h-screen">
+    <!-- Page Hero Section -->
+    <div class="container mx-auto px-14 py-28 mt-18">
+      <div class="text-left">
+        <h1 class="text-4xl font-bold mb-4">{{ page.title }}</h1>
+        <p class="text-lg mb-6">{{ page.description }}</p>
+
+        <!-- Links Section -->
+        <div v-if="page.links" class="flex items-center gap-2 justify-start">
+          <a
+            :href="global.meetingLink"
+            class="btn btn-info"
             v-bind="page.links[0]"
-          />
-          <UButton
-            :to="`mailto:${global.email}`"
+          >
+            {{ page.links[0]?.label }}
+          </a>
+          <a
+            :href="`mailto:${global.email}`"
+            class="btn btn-outline"
             v-bind="page.links[1]"
-          />
+          >
+            {{ page.links[1]?.label }}
+          </a>
         </div>
-      </template>
-    </UPageHero>
-    <UPageSection
-      :ui="{
-        container: '!pt-0'
-      }"
-    >
+      </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="container mx-auto px-8 pt-0 mb-14">
       <Motion
         v-for="(project, index) in projects"
         :key="project.title"
@@ -66,42 +62,66 @@ useSeoMeta({
         :transition="{ delay: 0.2 * index }"
         :in-view-options="{ once: true }"
       >
-        <UPageCard
-          :title="project.title"
-          :description="project.description"
-          :to="project.url"
-          orientation="horizontal"
-          variant="naked"
-          :reverse="index % 2 === 1"
-          class="group"
-          :ui="{
-            wrapper: 'max-sm:order-last'
-          }"
+        <!-- Project Card -->
+        <div
+          class="card lg:card-side bg-transparent shadow-none mb-8 group transition-all"
         >
-          <template #leading>
-            <span class="text-sm text-muted">
-              {{ new Date(project.date).getFullYear() }}
-            </span>
-          </template>
-          <template #footer>
-            <ULink
-              :to="project.url"
-              class="text-sm text-primary flex items-center"
-            >
-              View Project
-              <UIcon
-                name="i-lucide-arrow-right"
-                class="size-4 text-primary transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
-              />
-            </ULink>
-          </template>
-          <img
-            :src="project.image"
-            :alt="project.title"
-            class="object-cover w-full h-48 rounded-lg"
+          <div
+            class="flex flex-col lg:flex-row gap-6 p-6"
+            :class="{ 'lg:flex-row-reverse': index % 2 === 1 }"
           >
-        </UPageCard>
+            <!-- Image Section -->
+            <div class="flex-shrink-0 lg:w-96 max-sm:order-last">
+              <img
+                :src="project.image"
+                :alt="project.title"
+                class="object-cover w-full h-48 rounded-lg"
+              />
+            </div>
+
+            <!-- Content Section -->
+            <div class="flex-1 flex flex-col justify-between">
+              <div>
+                <!-- Year Badge -->
+                <div class="mb-2">
+                  <span class="text-sm">
+                    {{ new Date(project.date).getFullYear() }}
+                  </span>
+                </div>
+
+                <!-- Title and Description -->
+                <h2 class="card-title text-xl mb-3">{{ project.title }}</h2>
+                <p class="mb-4">
+                  {{ project.description }}
+                </p>
+              </div>
+
+              <!-- Footer Link -->
+              <div class="card-actions">
+                <a
+                  :href="project.url"
+                  class="text-sm text-info flex items-center gap-1 hover:gap-2 transition-all"
+                >
+                  View Project
+                  <svg
+                    class="w-4 h-4 text-info transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </Motion>
-    </UPageSection>
-  </UPage>
+    </div>
+  </div>
 </template>
