@@ -158,7 +158,7 @@ useSeoMeta({
             <div class="flex items-center gap-3">
               <Icon
                 name="fa6-solid:envelope"
-                class="shrink-0 size-5 text-base-content/60"
+                class="shrink-0 size-5 dark:text-base-content/60 text-info"
                 aria-hidden="true"
                 size="20"
               />
@@ -172,7 +172,7 @@ useSeoMeta({
             <div v-if="global.meetingLink" class="flex items-center gap-3">
               <Icon
                 name="fa6-solid:calendar-days"
-                class="shrink-0 size-5 text-base-content/60"
+                class="shrink-0 size-5 dark:text-base-content/60 text-info"
                 aria-hidden="true"
                 size="20"
               />
