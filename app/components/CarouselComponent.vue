@@ -31,12 +31,13 @@
         >
           <Slide v-for="(logo, index) in logos" :key="index">
             <div class="logo-slide">
-              <img
-                class="logo-container w-15 h-15 object-contain opacity-60 grayscale dark:invert dark:opacity-80 transition-all duration-300"
-                :src="logo.src"
-                :alt="logo.name"
-                :title="logo.name"
-              />
+              <div class="tooltip" :data-tip="logo.name">
+                <img
+                  class="logo-container w-15 h-15 object-contain opacity-60 grayscale dark:invert dark:opacity-80 transition-all duration-300"
+                  :src="logo.src"
+                  :alt="logo.name"
+                />
+              </div>
             </div>
           </Slide>
         </Carousel>
@@ -127,7 +128,7 @@ const logos = [
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
+  height: 140px;
 }
 
 .logo-container {

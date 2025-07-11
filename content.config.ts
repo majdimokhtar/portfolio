@@ -94,7 +94,7 @@ export default defineContentConfig({
         image: z.string().nonempty().editor({ input: "media" }),
         url: z.string().nonempty(),
         tags: z.array(z.string()),
-        date: z.date(),
+        date: z.string(),
       }),
     }),
     blog: defineCollection({

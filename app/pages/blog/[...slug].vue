@@ -67,6 +67,32 @@ const formatDate = (dateString: Date) => {
     day: "numeric",
   });
 };
+
+// Toast state
+const showToast = ref(false);
+const toastMessage = ref("");
+
+// Copy to clipboard function
+const copyToClipboard = async (text: string, message: string) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    toastMessage.value = message;
+    showToast.value = true;
+
+    // Auto-hide toast after 3 seconds
+    setTimeout(() => {
+      showToast.value = false;
+    }, 3000);
+  } catch (err) {
+    console.error("Failed to copy: ", err);
+    toastMessage.value = "Failed to copy link";
+    showToast.value = true;
+
+    setTimeout(() => {
+      showToast.value = false;
+    }, 3000);
+  }
+};
 </script>
 
 <template>
@@ -140,7 +166,7 @@ const formatDate = (dateString: Date) => {
             </div>
           </div>
         </div>
-        <div class="max-w-3xl mx-auto text-stone-900 dark:text-stone-50">
+        <div class="max-w-5xl mx-auto text-stone-900 dark:text-stone-50">
           <div class="prose prose-lg max-w-none content-colors">
             <ContentRenderer v-if="page.body" :value="page" />
           </div>
@@ -248,6 +274,28 @@ const formatDate = (dateString: Date) => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DaisyUI Toast - Bottom Right -->
+    <div class="toast toast-end toast-bottom z-50">
+      <div v-if="showToast" class="alert alert-success shadow-lg">
+        <div class="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="stroke-current shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span class="text-sm">{{ toastMessage }}</span>
         </div>
       </div>
     </div>

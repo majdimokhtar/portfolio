@@ -1,0 +1,17 @@
+title: Waha Oil Company
+description: Developed a comprehensive dual-platform solution for an oil company, featuring a modern public-facing website and a robust CMS for content management. Built with Vue.js frontend and Nest.js backend, the project delivers seamless user experiences across both customer-facing and administrative interfaces, with scalable architecture supporting complex business operations.
+image: /waha.webp # Industrial/oil company themed image
+url: "#"
+tags:
+  [
+    "Vue.js",
+    "Nest.js",
+    "Full-Stack",
+    "CMS",
+    "TypeScript",
+    "Vuetify",
+    "Ory Kratos",
+    "PostgreSQL",
+    "Prisma",
+  ]
+date: "2024-2025"

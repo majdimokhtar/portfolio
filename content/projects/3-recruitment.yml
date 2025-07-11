@@ -1,0 +1,6 @@
+title: Recruitment Dashboard App
+description: Designed and developed a recruitment dashboard application , created a UML class diagram with MIRO, implemented model view templates with Django MVT, integrated the recruitment API , and optimized data storage with PostgreSQL including geolocation functionality , created a user interface using Next.js and MUI and finally performed maintenance and bug fixing.
+image: https://majdi-mokhtar-portfolio.vercel.app/job1.webp # Example image related to code/development
+url: "#"
+tags: ["NextJs", "Django", "Nuxt", "PostgreSQL", "Miro"]
+date: "2023"

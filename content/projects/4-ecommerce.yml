@@ -1,0 +1,6 @@
+title: MERN E-COMMERCE APP
+description: MERN eCommerce application built with React, Redux, Express and MongoDB, including product reviews rating system and admin area for managing products , orders and users. It also includes top rated products carousel , search and pagination and full featured shopping cart with paypal api for payment, JWT for authentication, and EmailJS for contact form.
+image: https://majdi-mokhtar-portfolio.vercel.app/project3.webp # Example image related to music/audio
+url: "#"
+tags: ["React", "Redux", "Express", "MongoDB", "React Bootstrap"]
+date: "2022"

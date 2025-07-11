@@ -29,14 +29,14 @@ useSeoMeta({
     <!-- Page Hero Section -->
     <div class="container mx-auto px-14 py-28 mt-18">
       <div class="text-left">
-        <h1 class="text-4xl font-bold mb-4">{{ page.title }}</h1>
+        <h1 class="text-lg font-bold mb-4">{{ page.title }}</h1>
         <p class="text-lg mb-6">{{ page.description }}</p>
 
         <!-- Links Section -->
         <div v-if="page.links" class="flex items-center gap-2 justify-start">
           <a
             :href="global.meetingLink"
-            class="btn btn-info"
+            class="btn btn-info text-white"
             v-bind="page.links[0]"
           >
             {{ page.links[0]?.label }}
@@ -71,12 +71,15 @@ useSeoMeta({
             :class="{ 'lg:flex-row-reverse': index % 2 === 1 }"
           >
             <!-- Image Section -->
-            <div class="flex-shrink-0 lg:w-96 max-sm:order-last">
-              <img
+            <div class="flex-shrink-0 lg:w-96 max-sm:order-last relative group">
+              <NuxtImg
                 :src="project.image"
                 :alt="project.title"
-                class="object-cover w-full h-48 rounded-lg"
+                class="object-fill w-full h-54 rounded-lg"
               />
+              <div
+                class="absolute inset-0 bg-neutral-600/15 backdrop-blur-[0px] rounded-lg transition-all duration-300 group-hover:bg-neutral-600/0 h-54"
+              ></div>
             </div>
 
             <!-- Content Section -->
@@ -85,7 +88,7 @@ useSeoMeta({
                 <!-- Year Badge -->
                 <div class="mb-2">
                   <span class="text-sm">
-                    {{ new Date(project.date).getFullYear() }}
+                    {{ project.date }}
                   </span>
                 </div>
 

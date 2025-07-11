@@ -1,0 +1,6 @@
+title: RentX App
+description: RentX is a cutting-edge web application built with Next.js 14 and MongoDB, designed to enhance the rental property search experience. It features secure user authentication, dynamic profile management, comprehensive property management, integrated messaging, responsive UI with Tailwind CSS, interactive property maps, social media sharing, an admin dashboard with Stripe integration, CI/CD pipeline, data visualization, contact forms, and chatbot support for instant assistance.
+image: /rentx.webp
+url: "#"
+tags: ["Nextjs", "MongoDB", "Tailwind CSS", "Stripe", "Mailchimp"]
+date: "2024"
