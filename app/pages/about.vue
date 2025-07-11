@@ -34,7 +34,7 @@ useSeoMeta({
         <div class="flex justify-start">
           <div class="avatar">
             <div
-              class="w-36 h-36 rounded-lg ring ring-base-300 ring-offset-base-100 ring-offset-4 sm:rotate-2 ml-12"
+              class="w-36 h-36 rounded-lg ring ring-gray-300 dark:ring-stone-700 ring-offset-gray-300 dark:ring-offset-stone-700 ring-offset-4 sm:rotate-2 ml-12"
             >
               <img
                 :src="global.picture?.light || global.picture?.dark"

@@ -14,15 +14,15 @@ const searchQuery = ref("");
 const searchResults = computed(() => {
   if (!searchQuery.value || !files.value) return [];
 
-  // Simple search implementation - you can enhance this with Fuse.js or other search libraries
+  // Quick fix: cast file to any to access `description` without TS error
   return files.value
-    .filter(
-      (file) =>
+    .filter((file) => {
+      const f = file as any; // 👈 Quick TS bypass
+      return (
         file.title?.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-        file.description
-          ?.toLowerCase()
-          .includes(searchQuery.value.toLowerCase())
-    )
+        f.description?.toLowerCase().includes(searchQuery.value.toLowerCase())
+      );
+    })
     .slice(0, 42);
 });
 
@@ -42,8 +42,14 @@ onMounted(() => {
   });
 });
 
-// Toast notifications
-const toasts = ref([]);
+interface Toast {
+  id: number;
+  message: string;
+  type: "error" | "success" | "warning" | "info";
+}
+
+const toasts = ref<Toast[]>([]);
+
 const showToast = (
   message: string,
   type: "success" | "error" | "warning" | "info" = "info"
@@ -94,17 +100,15 @@ const [{ data: navigation }, { data: files }] = await Promise.all([
   <div>
     <AppHeader :links="navLinks" />
 
-    <main class="min-h-screen bg-white dark:bg-gray-900">
+    <main class="min-h-screen mt-28">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="py-16">
           <!-- Custom Error Component -->
           <div class="text-center">
-            <div class="text-6xl font-bold text-gray-900 dark:text-white mb-4">
+            <div class="text-6xl font-bold mb-4">
               {{ error.statusCode || 404 }}
             </div>
-            <h1
-              class="text-3xl font-semibold text-gray-900 dark:text-white mb-4"
-            >
+            <h1 class="text-3xl font-semibold mb-4">
               {{ error.statusMessage || "Page not found" }}
             </h1>
             <p
@@ -117,7 +121,7 @@ const [{ data: navigation }, { data: files }] = await Promise.all([
             </p>
             <NuxtLink
               to="/"
-              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-info hover:bg-info focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info transition-colors duration-200"
             >
               Go back home
             </NuxtLink>
@@ -156,7 +160,7 @@ const [{ data: navigation }, { data: files }] = await Promise.all([
                 {{ result.title }}
               </div>
               <div class="text-sm text-gray-600 dark:text-gray-400">
-                {{ result.description }}
+                {{ result.content }}
               </div>
             </div>
           </div>

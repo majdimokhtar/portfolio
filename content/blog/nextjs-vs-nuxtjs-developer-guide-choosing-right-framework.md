@@ -2,7 +2,7 @@
 title: "Next.js vs Nuxt.js: A Developer's Guide to Choosing the Right Framework"
 description: An in-depth comparison of Next.js and Nuxt.js from a developer's perspective. Learn when to choose each framework based on team skills, project requirements, and long-term goals.
 date: 2025-03-15
-image: https://zen8labs.b-cdn.net/wp-content/uploads/2024/02/MicrosoftTeams-image-14-1-1024x556.png
+image: /nuxtnext.webp
 minRead: 5
 author:
   name: Majdi Mokhtar

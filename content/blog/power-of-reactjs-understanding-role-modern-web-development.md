@@ -2,7 +2,7 @@
 title: "The Power of React.js: Understanding Its Role in Modern Web Development"
 description: Explore React.js's strengths and place in the modern web development ecosystem. A balanced look at React's capabilities, latest features, and how it fits alongside other frameworks.
 date: 2025-01-28
-image: https://miro.medium.com/v2/resize:fit:1400/1*MF5V_dkybUTcfzwHFh0VSw.jpeg
+image: /react.webp
 minRead: 7
 author:
   name: Majdi Mokhtar

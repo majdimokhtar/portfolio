@@ -105,7 +105,7 @@ const formatDate = (dateString: Date) => {
           <img
             :src="page.image"
             :alt="page.title"
-            class="rounded-lg w-full h-[300px] object-cover object-center"
+            class="rounded-lg w-full h-[400px] object-cover object-center"
           />
           <h1
             class="text-4xl text-center font-medium max-w-3xl mx-auto mt-4 text-stone-900 dark:text-stone-50"

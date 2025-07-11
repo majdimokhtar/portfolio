@@ -2,7 +2,7 @@
 title: "Nuxt.js 3: The Full-Stack Vue Framework That is Changing Web Development"
 description: Explore the power of Nuxt.js 3 and discover why it's becoming the go-to framework for modern Vue.js development. Learn universal rendering, file-based routing, and the revolutionary Nuxt Content module with practical examples for building modern web applications.
 date: 2025-03-05
-image: https://rock-the-prototype.com/wp-content/uploads/2022/01/Nuxt_JavaScript_Framework.jpg
+image: /nuxt.webp
 minRead: 6
 author:
   name: Majdi Mokhtar

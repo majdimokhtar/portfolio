@@ -2,7 +2,7 @@
 title: "Building Scalable NestJS Applications with Clean Architecture"
 description: Discover how to build robust, scalable NestJS applications using Clean Architecture principles. This comprehensive guide covers project structure, dependency injection, repository patterns, and use cases with practical code examples for maintainable backend development.
 date: 2025-04-23
-image: https://nestjs.com/img/nest-og.png
+image: /nest.webp
 minRead: 8
 author:
   name: Majdi Mokhtar
