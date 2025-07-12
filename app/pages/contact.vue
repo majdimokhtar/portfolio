@@ -141,7 +141,7 @@ useSeoMeta({
           <div class="form-control">
             <button
               type="submit"
-              class="btn btn-info w-full text-white"
+              class="btn dark:bg-white dark:text-stone-900 bg-stone-900 text-white w-full"
               :class="{ loading: isSubmitting }"
               :disabled="isSubmitting"
             >

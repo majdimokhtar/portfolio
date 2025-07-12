@@ -126,7 +126,7 @@ const colorMode = useColorMode();
           >
             <NuxtLink
               v-bind="page.hero.links[0]"
-              class="btn bg-white text-stone-900 btn-sm sm:btn-md lg:btn-md w-full sm:w-auto whitespace-nowrap"
+              class="btn dark:bg-white dark:text-stone-900 bg-stone-900 text-white btn-sm sm:btn-md lg:btn-md w-full sm:w-auto whitespace-nowrap"
             >
               {{ page.hero.links[0]?.label || "Let's work together" }}
             </NuxtLink>

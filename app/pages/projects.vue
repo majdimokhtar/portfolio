@@ -36,7 +36,7 @@ useSeoMeta({
         <div v-if="page.links" class="flex items-center gap-2 justify-start">
           <a
             :href="global.meetingLink"
-            class="btn btn-info text-white"
+            class="btn dark:bg-white dark:text-stone-900 bg-stone-900 text-white"
             v-bind="page.links[0]"
           >
             {{ page.links[0]?.label }}
