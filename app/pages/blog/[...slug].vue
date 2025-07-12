@@ -96,7 +96,7 @@ const copyToClipboard = async (text: string, message: string) => {
 </script>
 
 <template>
-  <main class="px-18 my-24">
+  <main class="px-4 md:px-18 my-24">
     <div class="container mx-auto relative min-h-screen">
       <div v-if="page" class="prose prose-lg max-w-none">
         <NuxtLink
@@ -134,12 +134,12 @@ const copyToClipboard = async (text: string, message: string) => {
             class="rounded-lg w-full h-[400px] object-fill object-center"
           />
           <h1
-            class="text-4xl text-center font-bold max-w-3xl mx-auto mt-4 text-stone-900 dark:text-stone-50"
+            class="text-xl md:text-4xl text-center font-bold max-w-3xl mx-auto mt-4 text-stone-900 dark:text-stone-50"
           >
             {{ page.title }}
           </h1>
           <p
-            class="text-stone-900 dark:text-stone-50 text-center max-w-2xl mx-auto"
+            class="text-stone-900 dark:text-stone-50 text-center max-w-2xl mx-auto text-sm md:text-lg"
           >
             {{ page.description }}
           </p>
@@ -167,7 +167,7 @@ const copyToClipboard = async (text: string, message: string) => {
           </div>
         </div>
         <div class="max-w-5xl mx-auto text-stone-900 dark:text-stone-50">
-          <div class="prose prose-lg max-w-none content-colors">
+          <div class="prose prose-sm md:prose-lg max-w-none content-colors">
             <ContentRenderer v-if="page.body" :value="page" />
           </div>
 
