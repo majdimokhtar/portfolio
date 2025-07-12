@@ -89,7 +89,7 @@ useSeoMeta({
               <img
                 :src="post.image"
                 :alt="post.title"
-                class="w-full h-64 md:h-70 object-fill rounded-lg shadow-lg border-4 border-gray-300 dark:border-stone-700 ring-2 ring-base-content/20 group-hover:scale-105 transition-transform duration-300"
+                class="w-full h-64 md:h-68 object-fill rounded-lg shadow-lg border-4 border-gray-300 dark:border-stone-700 ring-2 ring-base-content/20 group-hover:scale-105 transition-transform duration-300"
               />
             </div>
 

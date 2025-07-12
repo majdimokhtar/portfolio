@@ -12,7 +12,7 @@ export default defineNuxtSchema({
           title: "Meeting link",
           description: "Your meeting link.",
           icon: "lucide:calendar",
-          default: "https://cal.com/",
+          default: "https://tidycal.com/majdimokhtar/30-minute-meeting",
         }),
         available: field({
           type: "boolean",

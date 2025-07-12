@@ -49,8 +49,8 @@ useSeoMeta({
 
     <!-- Page Content Section -->
     <div class="container mx-auto px-14 pt-0">
-      <div class="prose prose-lg max-w-none content-colors">
-        <MDC :value="page.content" unwrap="p" />
+      <div class="prose prose-md max-w-none content-colors">
+        <MDC :value="page.content" unwrap="div" />
       </div>
 
       <!-- Images Section -->

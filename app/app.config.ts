@@ -6,7 +6,7 @@ export default defineAppConfig({
         "https://digital-resume-majdi-mokhtar.vercel.app/_next/image?url=%2Fmajdimokhtar.jpg&w=640&q=75",
       alt: "My profile picture",
     },
-    meetingLink: "https://cal.com/",
+    meetingLink: "https://tidycal.com/majdimokhtar/30-minute-meeting",
     email: "majdi.mokhtar@gmail.com",
     available: true,
   },
@@ -32,19 +32,19 @@ export default defineAppConfig({
     links: [
       {
         icon: "i-simple-icons-github",
-        to: "https://github.com/yourusername", // Replace with your GitHub URL
+        to: "https://github.com/majdimokhtar", // Replace with your GitHub URL
         target: "_blank",
         "aria-label": "GitHub Profile",
       },
       {
         icon: "i-simple-icons-linkedin",
-        to: "https://linkedin.com/in/yourprofile", // Replace with your LinkedIn URL
+        to: "https://www.linkedin.com/in/majdimokhtar", // Replace with your LinkedIn URL
         target: "_blank",
         "aria-label": "LinkedIn Profile",
       },
       {
         icon: "i-simple-icons-whatsapp",
-        to: "https://wa.me/yourphonenumber", // Replace with your WhatsApp link
+        to: "https://wa.me/+21623889644", // Replace with your WhatsApp link
         target: "_blank",
         "aria-label": "WhatsApp Contact",
       },

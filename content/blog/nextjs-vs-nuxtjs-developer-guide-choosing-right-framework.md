@@ -11,8 +11,6 @@ author:
     alt: Majdi Mokhtar
 ---
 
-# Next.js vs Nuxt.js: A Developer's Guide to Choosing the Right Framework
-
 As a developer who has worked extensively with both frameworks, I'm often asked: "Should I use Next.js or Nuxt.js for my project?" The answer isn't straightforward, and it depends on several factors that go beyond just personal preference. In this comprehensive guide, I'll share my insights on both frameworks to help you make an informed decision.
 
 ## The Foundation: React vs Vue

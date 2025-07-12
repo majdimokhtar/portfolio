@@ -11,8 +11,6 @@ author:
     alt: Majdi Mokhtar
 ---
 
-# Building Scalable NestJS Applications with Clean Architecture
-
 As applications grow in complexity, maintaining clean, testable, and scalable code becomes increasingly challenging. This is where Clean Architecture principles shine, especially when combined with the powerful NestJS framework. In this post, I'll walk you through implementing Clean Architecture in NestJS and explain why this approach has transformed how I build backend applications.
 
 ## What is Clean Architecture?

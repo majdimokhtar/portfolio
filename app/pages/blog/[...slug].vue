@@ -131,10 +131,10 @@ const copyToClipboard = async (text: string, message: string) => {
           <img
             :src="page.image"
             :alt="page.title"
-            class="rounded-lg w-full h-[400px] object-cover object-center"
+            class="rounded-lg w-full h-[400px] object-fill object-center"
           />
           <h1
-            class="text-4xl text-center font-medium max-w-3xl mx-auto mt-4 text-stone-900 dark:text-stone-50"
+            class="text-4xl text-center font-bold max-w-3xl mx-auto mt-4 text-stone-900 dark:text-stone-50"
           >
             {{ page.title }}
           </h1>
