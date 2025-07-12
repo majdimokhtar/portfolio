@@ -50,7 +50,7 @@ const colorMode = useColorMode();
 
       <!-- Title -->
       <div
-        class="text-shadow-md max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto mt-6 sm:mt-8 px-2"
+        class="text-shadow-md max-w-xs sm:max-w-lg md:max-w-lg lg:max-w-lg mx-auto mt-6 sm:mt-8 px-2"
       >
         <Motion
           :initial="{
@@ -77,7 +77,7 @@ const colorMode = useColorMode();
       </div>
 
       <!-- Description -->
-      <div class="mt-4 sm:mt-6 max-w-xs sm:max-w-md md:max-w-2xl mx-auto px-2">
+      <div class="mt-4 sm:mt-6 max-w-xs sm:max-w-md md:max-w-xl mx-auto px-2">
         <Motion
           :initial="{
             scale: 1.1,
@@ -95,7 +95,7 @@ const colorMode = useColorMode();
           }"
         >
           <p
-            class="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
+            class="text-sm sm:text-base md:text-md text-gray-600 dark:text-gray-400 leading-relaxed"
           >
             {{ page.description }}
           </p>
@@ -126,13 +126,13 @@ const colorMode = useColorMode();
           >
             <NuxtLink
               v-bind="page.hero.links[0]"
-              class="btn btn-info btn-sm sm:btn-md lg:btn-lg text-white w-full sm:w-auto whitespace-nowrap"
+              class="btn bg-white text-stone-900 btn-sm sm:btn-md lg:btn-md w-full sm:w-auto whitespace-nowrap"
             >
               {{ page.hero.links[0]?.label || "Let's work together" }}
             </NuxtLink>
             <NuxtLink
               :to="global.available ? global.meetingLink : ''"
-              class="btn btn-sm sm:btn-md lg:btn-lg btn-ghost border-2 transition-colors duration-200 w-full sm:w-auto"
+              class="btn btn-sm sm:btn-md lg:btn-md btn-ghost border-2 transition-colors duration-200 w-full sm:w-auto"
               :class="
                 global.available
                   ? 'border-success text-success hover:border-success hover:text-success hover:bg-success/10'
