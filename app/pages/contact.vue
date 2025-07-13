@@ -23,26 +23,114 @@ const form = ref({
 const isSubmitting = ref(false);
 const isSubmitted = ref(false);
 
-// Form submission handler
+// Form errors
+const errors = ref({
+  name: "",
+  email: "",
+  message: "",
+});
+
+// Validation functions
+const validateName = () => {
+  if (!form.value.name.trim()) {
+    errors.value.name = "Name is required";
+    return false;
+  }
+  errors.value.name = "";
+  return true;
+};
+
+const validateEmail = () => {
+  if (!form.value.email.trim()) {
+    errors.value.email = "Email is required";
+    return false;
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(form.value.email)) {
+    errors.value.email = "Please enter a valid email address";
+    return false;
+  }
+  errors.value.email = "";
+  return true;
+};
+
+const validateMessage = () => {
+  if (!form.value.message.trim()) {
+    errors.value.message = "Message is required";
+    return false;
+  }
+  errors.value.message = "";
+  return true;
+};
+
+// Watch for form changes to clear errors
+watch(
+  () => form.value.name,
+  () => {
+    if (form.value.name.trim()) validateName();
+    else errors.value.name = "";
+  }
+);
+watch(
+  () => form.value.email,
+  () => {
+    if (form.value.email.trim()) validateEmail();
+    else errors.value.email = "";
+  }
+);
+watch(
+  () => form.value.message,
+  () => {
+    if (form.value.message.trim()) validateMessage();
+    else errors.value.message = "";
+  }
+);
+
+// Formspree submission handler
 const handleSubmit = async () => {
   if (isSubmitting.value) return;
+
+  // Validate all fields
+  const isNameValid = validateName();
+  const isEmailValid = validateEmail();
+  const isMessageValid = validateMessage();
+
+  if (!isNameValid || !isEmailValid || !isMessageValid) {
+    return;
+  }
 
   isSubmitting.value = true;
 
   try {
-    // Replace with your actual form submission logic
-    // await $fetch('/api/contact', {
-    //   method: 'POST',
-    //   body: form.value
-    // })
+    // Replace YOUR_FORM_ID with your actual Formspree form ID
+    const response = await fetch("https://formspree.io/f/mgvzwzvq", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: form.value.name,
+        email: form.value.email,
+        subject: form.value.subject,
+        message: form.value.message,
+      }),
+    });
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (response.ok) {
+      isSubmitted.value = true;
+      form.value = { name: "", email: "", subject: "", message: "" };
+      errors.value = { name: "", email: "", message: "" };
 
-    isSubmitted.value = true;
-    form.value = { name: "", email: "", subject: "", message: "" };
+      // Auto-hide success message after 2 seconds
+      setTimeout(() => {
+        isSubmitted.value = false;
+      }, 2000);
+    } else {
+      throw new Error("Failed to send message");
+    }
   } catch (error) {
     console.error("Form submission error:", error);
+    alert("There was an error sending your message. Please try again.");
   } finally {
     isSubmitting.value = false;
   }
@@ -84,69 +172,96 @@ useSeoMeta({
         <form @submit.prevent="handleSubmit" class="space-y-6">
           <!-- Name Field -->
           <div class="form-control">
-            <label class="label">
-              <span class="label-text text-base font-medium">Name</span>
+            <label class="label mb-2">
+              <span class="label-text text-base font-medium">
+                Name <span class="text-red-500">*</span>
+              </span>
             </label>
             <input
               v-model="form.name"
               type="text"
+              name="name"
               placeholder="Your full name"
               class="input input-bordered w-full bg-stone-50 dark:bg-stone-800 text-stone-800 dark:text-stone-50 placeholder-stone-500 dark:placeholder-stone-400"
-              required
+              :class="{ 'border-red-500': errors.name }"
+              
             />
+            <div v-if="errors.name" class="label">
+              <span class="label-text-alt text-red-500">{{ errors.name }}</span>
+            </div>
           </div>
 
           <!-- Email Field -->
           <div class="form-control">
-            <label class="label">
-              <span class="label-text text-base font-medium">Email</span>
+            <label class="label mb-2">
+              <span class="label-text text-base font-medium">
+                Email <span class="text-red-500">*</span>
+              </span>
             </label>
             <input
               v-model="form.email"
               type="email"
+              name="email"
               placeholder="your.email@example.com"
               class="input input-bordered w-full bg-stone-50 dark:bg-stone-800 text-stone-800 dark:text-stone-50 placeholder-stone-500 dark:placeholder-stone-400"
-              required
+              :class="{ 'border-red-500': errors.email }"
+              
             />
+            <div v-if="errors.email" class="label">
+              <span class="label-text-alt text-red-500">{{
+                errors.email
+              }}</span>
+            </div>
           </div>
 
           <!-- Subject Field -->
           <div class="form-control">
-            <label class="label">
+            <label class="label mb-2">
               <span class="label-text text-base font-medium">Subject</span>
             </label>
             <input
               v-model="form.subject"
               type="text"
+              name="subject"
               placeholder="What's this about?"
               class="input input-bordered w-full bg-stone-50 dark:bg-stone-800 text-stone-800 dark:text-stone-50 placeholder-stone-500 dark:placeholder-stone-400"
-              required
             />
           </div>
 
           <!-- Message Field -->
           <div class="form-control">
-            <label class="label">
-              <span class="label-text text-base font-medium">Message</span>
+            <label class="label mb-2">
+              <span class="label-text text-base font-medium">
+                Message <span class="text-red-500">*</span>
+              </span>
             </label>
             <textarea
               v-model="form.message"
+              name="message"
               placeholder="Tell me about your project, ideas, or just say hello..."
               class="textarea textarea-bordered h-32 w-full resize-none bg-stone-50 dark:bg-stone-800 text-stone-800 dark:text-stone-50 placeholder-stone-500 dark:placeholder-stone-400"
-              required
+              :class="{ 'border-red-500': errors.message }"
+              
             ></textarea>
+            <div v-if="errors.message" class="label">
+              <span class="label-text-alt text-red-500">{{
+                errors.message
+              }}</span>
+            </div>
           </div>
 
           <!-- Submit Button -->
           <div class="form-control">
             <button
               type="submit"
-              class="btn btn-info text-white w-full"
-              :class="{ loading: isSubmitting }"
+              class="btn btn-info text-white w-full flex items-center justify-center gap-2"
               :disabled="isSubmitting"
             >
-              <span v-if="!isSubmitting">Send Message</span>
-              <span v-else>Sending...</span>
+              <span
+                v-if="isSubmitting"
+                class="loading loading-spinner loading-sm"
+              ></span>
+              <span>{{ isSubmitting ? "Sending..." : "Send Message" }}</span>
             </button>
           </div>
         </form>
