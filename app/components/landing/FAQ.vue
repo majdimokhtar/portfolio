@@ -83,7 +83,7 @@ const getIndicatorStyle = (index: number) => {
           v-for="(item, index) in items"
           :key="index"
           @click="activeTab = index"
-          class="group relative inline-flex items-center min-w-0 hover:text-stone-900 dark:hover:text-white font-medium disabled:cursor-not-allowed disabled:opacity-75 transition-colors justify-center text-sm gap-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 px-3 py-2 rounded-lg hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50"
+          class="group relative inline-flex items-center min-w-0 hover:text-stone-900 dark:hover:text-white font-medium disabled:cursor-not-allowed disabled:opacity-75 transition-colors justify-center text-sm gap-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-info px-3 py-2 rounded-lg hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50"
           :class="[
             activeTab === index
               ? 'text-stone-900 dark:text-white'
@@ -116,7 +116,7 @@ const getIndicatorStyle = (index: number) => {
               type="button"
               @click="toggleAccordion(tabIndex, questionIndex)"
               :aria-expanded="isAccordionOpen(tabIndex, questionIndex)"
-              class="accordion-trigger w-full flex items-center justify-between gap-4 font-medium py-4 px-4 text-base mb-2 rounded-lg bg-neutral-100/60 dark:bg-neutral-800/60 hover:bg-neutral-200/50 dark:hover:bg-neutral-700/50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-left text-stone-900 dark:text-white group"
+              class="accordion-trigger w-full flex items-center justify-between gap-4 font-medium py-4 px-4 text-base mb-2 rounded-lg bg-neutral-100/60 dark:bg-neutral-800/60 hover:bg-neutral-200/50 dark:hover:bg-neutral-700/50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-info text-left text-stone-900 dark:text-white group"
             >
               <span>{{ question.label }}</span>
               <svg

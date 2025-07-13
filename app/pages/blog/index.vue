@@ -54,7 +54,7 @@ useSeoMeta({
               v-for="link in page.links"
               :key="link.label"
               :href="link.to"
-              class="btn dark:bg-white dark:text-stone-900 bg-stone-900 text-white"
+              class="btn btn-info text-white"
             >
               {{ link.label }}
             </a>
@@ -138,7 +138,7 @@ useSeoMeta({
                 </span>
               </div>
 
-              <NuxtLink :to="post.path" class="btn dark:bg-white dark:text-stone-900 bg-stone-900 text-white btn-sm">
+              <NuxtLink :to="post.path" class="btn btn-info text-white btn-sm">
                 Read More
                 <svg
                   class="w-4 h-4 ml-2"

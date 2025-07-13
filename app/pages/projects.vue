@@ -29,14 +29,14 @@ useSeoMeta({
     <!-- Page Hero Section -->
     <div class="container mx-auto px-14 py-28 mt-18">
       <div class="text-left">
-        <h1 class="text-lg font-bold mb-4">{{ page.title }}</h1>
+        <h1 class="text-5xl font-bold mb-4 max-w-[400px]">{{ page.title }}</h1>
         <p class="text-lg mb-6">{{ page.description }}</p>
 
         <!-- Links Section -->
         <div v-if="page.links" class="flex items-center gap-2 justify-start">
           <a
             :href="global.meetingLink"
-            class="btn dark:bg-white dark:text-stone-900 bg-stone-900 text-white"
+            class="btn btn-info text-white"
             v-bind="page.links[0]"
           >
             {{ page.links[0]?.label }}

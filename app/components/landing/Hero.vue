@@ -124,12 +124,14 @@ const colorMode = useColorMode();
             v-if="page.hero.links"
             class="flex flex-col sm:flex-row items-center gap-3 sm:gap-2 w-full max-w-xs sm:max-w-none"
           >
-            <NuxtLink
+            <a
+              href="https://digital-resume-majdi-mokhtar.vercel.app/Majdi%20MOKHTAR%20CV.pdf"
+              target="_blank"
               v-bind="page.hero.links[0]"
-              class="btn dark:bg-white dark:text-stone-900 bg-stone-900 text-white btn-sm sm:btn-md lg:btn-md w-full sm:w-auto whitespace-nowrap"
+              class="btn btn-info text-white btn-sm sm:btn-md lg:btn-md w-full sm:w-auto whitespace-nowrap"
             >
-              {{ page.hero.links[0]?.label || "Let's work together" }}
-            </NuxtLink>
+              {{ page.hero.links[0]?.label || "Download Resume" }}
+            </a>
             <NuxtLink
               :to="global.available ? global.meetingLink : ''"
               class="btn btn-sm sm:btn-md lg:btn-md btn-ghost border-2 transition-colors duration-200 w-full sm:w-auto"

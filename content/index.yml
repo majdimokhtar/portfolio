@@ -5,7 +5,7 @@ title: "Hey, I'm Majdi Mokhtar Web Developer"
 description: "I craft intuitive digital experiences where design meets functionality. Based in Tunisia, bringing ideas to life through code and creativity."
 hero:
   links:
-    - label: "Let's work together"
+    - label: "Download Resume"
       to: https://github.com/nuxt-ui-pro/portfolio
       color: "neutral"
   images:
