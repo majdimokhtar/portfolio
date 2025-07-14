@@ -7,7 +7,7 @@ minRead: 6
 author:
   name: Majdi Mokhtar
   avatar:
-    src: https://digital-resume-majdi-mokhtar.vercel.app/_next/image?url=%2Fmajdimokhtar.jpg&w=640&q=75
+    src: /avatar.jpg
     alt: Majdi Mokhtar
 ---
 

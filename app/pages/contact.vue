@@ -149,7 +149,7 @@ useSeoMeta({
     <!-- Page Hero Section -->
     <div class="container mx-auto px-14 py-12 mt-18">
       <div class="text-left max-w-2xl">
-        <h1 class="text-4xl font-bold mb-4">{{ page.title }}</h1>
+        <h1 class="md:text-5xl text-4xl font-bold mb-4">{{ page.title }}</h1>
         <p class="text-lg mb-8">{{ page.description }}</p>
       </div>
     </div>
@@ -158,14 +158,16 @@ useSeoMeta({
     <div class="container mx-auto px-14 pt-0">
       <div class="max-w-2xl">
         <!-- Success Message -->
-        <div v-if="isSubmitted" class="alert alert-success mb-6">
-          <Icon
-            name="fa6-solid:circle-check"
-            class="shrink-0 size-6"
-            aria-hidden="true"
-            size="24"
-          />
-          <span>Thank you! Your message has been sent successfully.</span>
+        <div class="toast toast-end toast-bottom z-50">
+          <div v-if="isSubmitted" class="alert alert-success mb-6">
+            <Icon
+              name="fa6-solid:circle-check"
+              class="shrink-0 size-6"
+              aria-hidden="true"
+              size="24"
+            />
+            <span>Thank you! Your message has been sent successfully.</span>
+          </div>
         </div>
 
         <!-- Contact Form -->
@@ -184,7 +186,6 @@ useSeoMeta({
               placeholder="Your full name"
               class="input input-bordered w-full bg-stone-50 dark:bg-stone-800 text-stone-800 dark:text-stone-50 placeholder-stone-500 dark:placeholder-stone-400"
               :class="{ 'border-red-500': errors.name }"
-              
             />
             <div v-if="errors.name" class="label">
               <span class="label-text-alt text-red-500">{{ errors.name }}</span>
@@ -205,7 +206,6 @@ useSeoMeta({
               placeholder="your.email@example.com"
               class="input input-bordered w-full bg-stone-50 dark:bg-stone-800 text-stone-800 dark:text-stone-50 placeholder-stone-500 dark:placeholder-stone-400"
               :class="{ 'border-red-500': errors.email }"
-              
             />
             <div v-if="errors.email" class="label">
               <span class="label-text-alt text-red-500">{{
@@ -241,7 +241,6 @@ useSeoMeta({
               placeholder="Tell me about your project, ideas, or just say hello..."
               class="textarea textarea-bordered h-32 w-full resize-none bg-stone-50 dark:bg-stone-800 text-stone-800 dark:text-stone-50 placeholder-stone-500 dark:placeholder-stone-400"
               :class="{ 'border-red-500': errors.message }"
-              
             ></textarea>
             <div v-if="errors.message" class="label">
               <span class="label-text-alt text-red-500">{{
@@ -255,7 +254,9 @@ useSeoMeta({
             <button
               type="submit"
               class="btn btn-info text-white w-full flex items-center justify-center gap-2"
+              :class="{ 'opacity-75 cursor-not-allowed': isSubmitting }"
               :disabled="isSubmitting"
+              style="background-color: #00bafe !important"
             >
               <span
                 v-if="isSubmitting"

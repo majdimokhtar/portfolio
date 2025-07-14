@@ -7,7 +7,7 @@ minRead: 8
 author:
   name: Majdi Mokhtar
   avatar:
-    src: https://digital-resume-majdi-mokhtar.vercel.app/_next/image?url=%2Fmajdimokhtar.jpg&w=640&q=75
+    src: /avatar.jpg
     alt: Majdi Mokhtar
 ---
 
@@ -99,11 +99,7 @@ export class CreateUserUseCase {
   ) {}
 
   async execute(userData: CreateUserDto): Promise<User> {
-    const user = new User(
-      generateId(),
-      userData.email,
-      userData.name
-    );
+    const user = new User(generateId(), userData.email, userData.name);
 
     await this.userRepository.save(user);
     await this.emailService.sendWelcomeEmail(user.email);
@@ -148,7 +144,7 @@ Controllers should be thin layers that handle HTTP concerns and delegate to use 
 
 ```typescript
 // presentation/controllers/user.controller.ts
-@Controller('users')
+@Controller("users")
 export class UserController {
   constructor(
     private readonly createUserUseCase: CreateUserUseCase,
@@ -161,8 +157,8 @@ export class UserController {
     return new UserResponse(user);
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string): Promise<UserResponse> {
+  @Get(":id")
+  async findOne(@Param("id") id: string): Promise<UserResponse> {
     const user = await this.getUserUseCase.execute(id);
     return new UserResponse(user);
   }
@@ -179,25 +175,22 @@ Wire everything together using NestJS modules:
   imports: [TypeOrmModule.forFeature([UserEntity])],
   providers: [
     {
-      provide: 'UserRepository',
+      provide: "UserRepository",
       useClass: TypeormUserRepository,
     },
     {
-      provide: 'EmailService',
+      provide: "EmailService",
       useClass: SendgridEmailService,
     },
   ],
-  exports: ['UserRepository', 'EmailService'],
+  exports: ["UserRepository", "EmailService"],
 })
 export class InfrastructureModule {}
 
 // application/application.module.ts
 @Module({
   imports: [InfrastructureModule],
-  providers: [
-    CreateUserUseCase,
-    GetUserUseCase,
-  ],
+  providers: [CreateUserUseCase, GetUserUseCase],
   exports: [CreateUserUseCase, GetUserUseCase],
 })
 export class ApplicationModule {}
@@ -206,15 +199,19 @@ export class ApplicationModule {}
 ## Benefits I've Experienced
 
 ### 1. **Testability**
+
 Each layer can be tested in isolation. Use cases can be unit tested without touching the database, and repositories can be mocked easily.
 
 ### 2. **Flexibility**
+
 Want to switch from PostgreSQL to MongoDB? Just implement a new repository. Need to change email providers? Swap out the email service implementation.
 
 ### 3. **Team Collaboration**
+
 Clear boundaries make it easier for teams to work on different parts of the application without stepping on each other's toes.
 
 ### 4. **Maintainability**
+
 Business logic is centralized and doesn't leak into controllers or database layers, making it easier to understand and modify.
 
 ## Common Pitfalls to Avoid
@@ -227,6 +224,7 @@ Business logic is centralized and doesn't leak into controllers or database laye
 ## When to Use Clean Architecture
 
 Clean Architecture shines in:
+
 - **Complex business domains** with intricate rules
 - **Long-lived applications** that need to evolve
 - **Team environments** where clear boundaries help collaboration
@@ -242,4 +240,4 @@ The key is to start simple and evolve your architecture as your application grow
 
 ---
 
-*What's your experience with Clean Architecture in NestJS? Have you found different approaches that work well for your projects? I'd love to hear your thoughts in the comments below.*
+_What's your experience with Clean Architecture in NestJS? Have you found different approaches that work well for your projects? I'd love to hear your thoughts in the comments below._

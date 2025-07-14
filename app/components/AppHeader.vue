@@ -62,7 +62,7 @@ const closeMenu = () => {
 
     <!-- Mobile Navigation -->
     <div
-      class="flex flex-1 justify-end md:hidden"
+      class="flex flex-1 justify-end md:hidden mt-2"
       :class="{ 'opacity-0 pointer-events-none': isMenuOpen }"
     >
       <div class="flex items-center gap-2">

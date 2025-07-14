@@ -1,9 +1,8 @@
 export default defineAppConfig({
   global: {
     picture: {
-      dark: "https://digital-resume-majdi-mokhtar.vercel.app/_next/image?url=%2Fmajdimokhtar.jpg&w=640&q=75",
-      light:
-        "https://digital-resume-majdi-mokhtar.vercel.app/_next/image?url=%2Fmajdimokhtar.jpg&w=640&q=75",
+      dark: "/avatar.jpg",
+      light: "/avatar.jpg",
       alt: "My profile picture",
     },
     meetingLink: "https://tidycal.com/majdimokhtar/30-minute-meeting",

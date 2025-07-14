@@ -26,7 +26,7 @@ useSeoMeta({
     <div class="container mx-auto px-14 py-28 mt-18">
       <div class="lg:flex sm:flex-row items-center">
         <div class="flex-1">
-          <h1 class="text-4xl font-bold mb-4 text-left">{{ page.title }}</h1>
+          <h1 class="md:text-5xl text-4xl font-bold mb-4 text-left">{{ page.title }}</h1>
           <p class="text-lg mb-6 text-left">
             {{ page.description }}
           </p>

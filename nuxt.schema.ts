@@ -38,16 +38,14 @@ export default defineNuxtSchema({
               title: "Dark mode",
               description: "Your profile picture in dark mode.",
               icon: "lucide:moon",
-              default:
-                "https://digital-resume-majdi-mokhtar.vercel.app/_next/image?url=%2Fmajdimokhtar.jpg&w=640&q=75",
+              default: "/avatar.jpg",
             }),
             light: field({
               type: "string",
               title: "Light mode",
               description: "Your profile picture in light mode.",
               icon: "lucide:sun",
-              default:
-                "https://digital-resume-majdi-mokhtar.vercel.app/_next/image?url=%2Fmajdimokhtar.jpg&w=640&q=75",
+              default: "/avatar.jpg",
             }),
             alt: field({
               type: "string",
