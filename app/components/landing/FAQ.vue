@@ -47,7 +47,7 @@ const getIndicatorStyle = (index: number) => {
 
 <template>
   <div
-    class="w-full max-w-7xl mx-auto flex flex-col lg:grid py-16 sm:py-24 lg:py-32 px-0 !pt-0 gap-4 sm:gap-4 mt-18"
+    class="w-full max-w-7xl mx-auto flex flex-col lg:grid py-16 sm:py-24 lg:py-32 px-0 !pt-0 gap-4 sm:gap-4 mt-14"
   >
     <!-- Header -->
     <div class="">

@@ -82,38 +82,47 @@ blog:
   description: "Some of my recent thoughts"
 faq:
   title: Frequently Asked Questions
-  description: Answers to common questions about my process and services.
+  description: Answers to common questions about my development process and services.
   categories:
     - title: Services & Process
       questions:
-        - label: What services do you offer?
+        - label: What development services do you provide?
           content: |
-            I specialize in UX/UI design and front-end development. This includes user research, wireframing, interactive prototyping, creating intuitive user interfaces, building responsive websites and web applications (especially with Vue.js/Nuxt.js), and developing design systems. My goal is to create seamless digital experiences from concept to deployment.
-        - label: What is your design process like?
+            I specialize in full-stack JavaScript development, focusing on React, Vue.js, and NestJS. My services include building responsive web applications, creating dynamic user interfaces, developing robust backend APIs, database design, and implementing modern development practices. I handle everything from initial concept to deployment and ongoing maintenance.
+        - label: What is your development approach?
           content: |
-            My process is collaborative and iterative, typically involving stages like Discovery & Research, Ideation & Prototyping, User Testing, Visual Design, and close collaboration with development teams during implementation. I tailor the process based on project needs, always focusing on user-centered solutions.
-        - label: Do you work with startups?
+            My development process is collaborative and quality-focused. I start with understanding your requirements, then move through planning, development, testing, and deployment phases. I believe in clean, efficient code and pay attention to small details that make a big difference in user experience. Throughout the project, I maintain open communication and provide regular updates.
+        - label: Do you work with teams and other developers?
           content: |
-            Absolutely! I enjoy working with startups to help shape their product vision and create user-friendly interfaces from the ground up. I can adapt my process to fit the fast-paced startup environment.
+            Absolutely! I'm a firm believer in collaboration and teamwork. I enjoy working with other developers, designers, and stakeholders to create better solutions together. Whether it's code reviews, pair programming, or contributing to larger projects, I value the "two heads are better than one" philosophy.
+        - label: Can you help with existing projects or do you only build from scratch?
+          content: |
+            I work on both new projects and existing codebases. Whether you need a fresh application built from the ground up, want to add new features to an existing system, or need help debugging and optimizing current code, I can adapt to your project's needs and current technology stack.
     - title: Pricing & Timelines
       questions:
-        - label: How much does a project typically cost?
+        - label: How do you determine project pricing?
           content: |
-            Project costs vary based on scope, complexity, features, and timeline. For comprehensive UX/UI design and front-end development projects, my engagements typically start around $5,000, with average projects ranging between $8,000 and $25,000. For consulting or specific design tasks, my day rate is $700.
-        - label: What are your payment terms?
+            Project costs depend on various factors including scope, complexity, required features, timeline, and technology stack. Every project is unique, so I provide customized quotes after understanding your specific requirements. I consider factors like development time, testing needs, and ongoing support when preparing estimates.
+        - label: What affects the timeline of a project?
           content: |
-            I generally require a 40% deposit to schedule the project and begin work, with the remaining 60% due upon successful project completion and delivery. I accept payments via bank transfer and Stripe.
-        - label: How long does a typical project take?
+            Timeline depends on project complexity, feature requirements, integration needs, and testing requirements. Simple applications might take a few weeks, while more complex full-stack applications can take several months. I always provide realistic timeline estimates after thoroughly understanding your project scope.
+        - label: Do you offer ongoing support and maintenance?
           content: |
-            Timelines depend heavily on the project's scope and complexity. Smaller projects might take 3-4 weeks, while larger, more involved projects can range from 2 to 4 months. I always provide a detailed timeline estimate after the initial discovery phase.
-        - label: Do you offer retainers or ongoing support?
+            Yes, I provide ongoing support and maintenance services for projects I've developed. This can include bug fixes, feature updates, performance optimization, and general maintenance. We can discuss ongoing support arrangements based on your specific needs and requirements.
+        - label: How do you handle project changes and scope adjustments?
           content: |
-            Yes, for clients needing ongoing design support, feature development, or maintenance, I offer monthly retainer options tailored to specific needs. Let's discuss if this is something you're interested in.
-    - title: About Me
+            I understand that projects can evolve during development. I'm flexible with reasonable scope adjustments and will discuss how changes impact timeline and budget. Clear communication about any modifications helps ensure we stay aligned on project goals and expectations.
+    - title: Technical & Collaboration
       questions:
-        - label: What do you enjoy most about your work?
+        - label: What technologies do you work with?
           content: |
-            I love the challenge of solving complex problems through design and technology. It's incredibly rewarding to see people interact with something I've created and find it genuinely useful and easy to navigate. Bridging the gap between user needs and technical possibilities is what truly excites me.
-        - label: What are your hobbies outside of work?
+            I specialize in modern JavaScript technologies including React, Vue.js, and NestJS. I also work with various databases, deployment platforms, and development tools. I stay current with the latest frameworks and development practices to ensure I'm using the best tools for each project.
+        - label: How do you ensure code quality?
           content: |
-            When I'm not designing or coding, I enjoy exploring Tunisia's neighborhoods, trying out new coffee shops, and hiking in the nearby reservations. I'm also passionate about photography and occasionally contribute to open-source projects.
+            I believe in writing clean, maintainable code and following modern development practices. This includes proper testing, code organization, documentation, and adherence to best practices. I love spending time on the details because I know that's where exceptional applications are built.
+        - label: Do you contribute to open-source projects?
+          content: |
+            Yes, I'm passionate about the open-source community and contribute to various projects when possible. I believe in giving back to the developer community and staying engaged with the latest developments in web technology.
+        - label: How do you stay current with new technologies?
+          content: |
+            I'm constantly learning and exploring new technologies and approaches. I regularly dive into the latest JavaScript frameworks, development tools, and best practices. This continuous learning keeps me excited about development and ensures I can offer modern, effective solutions.

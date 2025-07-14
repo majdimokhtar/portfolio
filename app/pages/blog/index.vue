@@ -77,7 +77,7 @@ useSeoMeta({
         >
           <!-- Blog Post Card -->
           <div
-            class="group overflow-visible transition-all duration-300 md:grid md:grid-cols-2 gap-8 items-center"
+            class="group overflow-visible md:grid md:grid-cols-2 gap-8 items-center"
           >
             <!-- Post Image -->
             <div
@@ -117,7 +117,7 @@ useSeoMeta({
               </div>
 
               <h2
-                class="text-xl md:text-xl font-bold mb-4 group-hover:text-info transition-colors"
+                class="text-xl md:text-xl font-bold mb-4 group-hover:text-info"
               >
                 <a :href="post.path" class="hover:underline">
                   {{ post.title }}

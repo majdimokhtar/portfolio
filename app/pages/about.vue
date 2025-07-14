@@ -23,7 +23,7 @@ useSeoMeta({
 <template>
   <div v-if="page" class="min-h-screen content-colors">
     <!-- Page Hero Section -->
-    <div class="container mx-auto px-14 py-28 mt-18">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-28 mt-18">
       <div class="lg:flex sm:flex-row items-center">
         <div class="flex-1">
           <h1 class="md:text-5xl text-4xl font-bold mb-4 text-left">{{ page.title }}</h1>
@@ -48,7 +48,7 @@ useSeoMeta({
     </div>
 
     <!-- Page Content Section -->
-    <div class="container mx-auto px-14 pt-0">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-0">
       <div class="prose prose-md max-w-none content-colors">
         <MDC :value="page.content" unwrap="div" />
       </div>

@@ -19,10 +19,8 @@ useHead({
 
 useSeoMeta({
   titleTemplate: "%s - Nuxt Portfolio Template",
-  ogImage:
-    "/ogImage.webp",
-  twitterImage:
-    "/ogImage.webp",
+  ogImage: "/ogImage.webp",
+  twitterImage: "/ogImage.webp",
   twitterCard: "summary_large_image",
 });
 
@@ -51,7 +49,7 @@ const [{ data: navigation }, { data: files }] = await Promise.all([
 
 <template>
   <div
-    class="min-h-screen bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white"
+    class="min-h-screen bg-zinc-50 dark:bg-black text-neutral-900 dark:text-white"
   >
     <NuxtLayout>
       <main class="relative">

@@ -18,6 +18,7 @@
       <!-- Carousel Container -->
       <div class="carousel-wrapper">
         <Carousel
+          :breakpoints="breakpoints"
           :items-to-show="8"
           :transition="7000"
           :autoplay="500"
@@ -113,6 +114,29 @@ const logos = [
     src: svgImage13,
   },
 ];
+const breakpoints = {
+  // Mobile screens (up to 640px)
+  0: {
+    itemsToShow: 2,
+    gap: 20,
+  },
+  // Small tablets (641px to 768px)
+  641: {
+    itemsToShow: 3,
+    gap: 30,
+  },
+  // Medium tablets (769px to 1024px)
+  769: {
+    itemsToShow: 4,
+    gap: 40,
+  },
+  // Large tablets/small desktops (1025px to 1280px)
+  1024: {
+    itemsToShow: 6,
+    gap: 50,
+  },
+  // Desktop and larger (1281px and up uses default itemsToShow: 8)
+};
 </script>
 
 <style scoped>

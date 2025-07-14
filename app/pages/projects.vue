@@ -27,7 +27,7 @@ useSeoMeta({
 <template>
   <div v-if="page" class="min-h-screen">
     <!-- Page Hero Section -->
-    <div class="container mx-auto px-4 md:px-14 py-28 mt-18">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 md:px-14 py-28 mt-18">
       <div class="text-left">
         <h1 class="md:text-5xl text-4xl font-bold mb-4 max-w-[400px]">
           {{ page.title }}
@@ -55,7 +55,7 @@ useSeoMeta({
     </div>
 
     <!-- Projects Section -->
-    <div class="container mx-auto px-2 md:px-8 pt-0 mb-14">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-0 mb-14">
       <Motion
         v-for="(project, index) in projects"
         :key="project.title"
@@ -69,7 +69,7 @@ useSeoMeta({
           class="card lg:card-side bg-transparent shadow-none mb-8 group transition-all"
         >
           <div
-            class="flex flex-col lg:flex-row gap-6 px-2 md:px-6"
+            class="flex flex-col lg:flex-row gap-6"
             :class="{ 'lg:flex-row-reverse': index % 2 === 1 }"
           >
             <!-- Image Section -->

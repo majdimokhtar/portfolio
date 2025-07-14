@@ -147,7 +147,7 @@ useSeoMeta({
 <template>
   <div v-if="page" class="min-h-screen text-stone-800 dark:text-stone-50">
     <!-- Page Hero Section -->
-    <div class="container mx-auto px-14 py-12 mt-18">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-18">
       <div class="text-left max-w-2xl">
         <h1 class="md:text-5xl text-4xl font-bold mb-4">{{ page.title }}</h1>
         <p class="text-lg mb-8">{{ page.description }}</p>
@@ -155,7 +155,7 @@ useSeoMeta({
     </div>
 
     <!-- Contact Form Section -->
-    <div class="container mx-auto px-14 pt-0">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-0">
       <div class="max-w-2xl">
         <!-- Success Message -->
         <div class="toast toast-end toast-bottom z-50">
