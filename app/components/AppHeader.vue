@@ -107,7 +107,7 @@ const closeMenu = () => {
       <div
         v-if="isMenuOpen"
         class="fixed inset-x-4 top-8 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800 md:hidden"
-        style="z-index: 999999999999 !important"
+        style="z-index: 99999999999 !important"
         @click.self="closeMenu"
       >
         <!-- Modal Header -->
