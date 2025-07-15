@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 const colorMode = useColorMode();
 
 const color = computed(() =>
   colorMode.value === "dark" ? "#020618" : "white"
 );
+
+const showSearch = ref(false);
+const searchQuery = ref('');
+const searchResults = ref<any[]>([]);
 
 useHead({
   meta: [

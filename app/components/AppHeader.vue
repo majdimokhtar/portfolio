@@ -106,7 +106,8 @@ const closeMenu = () => {
     >
       <div
         v-if="isMenuOpen"
-        class="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800 md:hidden"
+        class="fixed inset-x-4 top-8 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800 md:hidden"
+        style="z-index: 999999999999 !important"
         @click.self="closeMenu"
       >
         <!-- Modal Header -->
@@ -158,24 +159,24 @@ const closeMenu = () => {
         </nav>
       </div>
     </Transition>
-
-    <!-- Modal Backdrop -->
-    <Transition
-      enter-active-class="duration-150 ease-out"
-      enter-from-class="opacity-0"
-      enter-to-class="opacity-100"
-      leave-active-class="duration-150 ease-in"
-      leave-from-class="opacity-100"
-      leave-to-class="opacity-0"
-    >
-      <div
-        v-if="isMenuOpen"
-        class="fixed inset-0 bg-black/20 backdrop-blur-sm z-10 md:hidden min-h-screen"
-        style="min-height: 100vh; min-height: 100dvh; margin-top: -20px"
-        @click="closeMenu"
-      />
-    </Transition>
   </div>
+
+  <!-- Modal Backdrop - MOVED OUTSIDE THE POSITIONED CONTAINER -->
+  <Transition
+    enter-active-class="duration-150 ease-out"
+    enter-from-class="opacity-0"
+    enter-to-class="opacity-100"
+    leave-active-class="duration-150 ease-in"
+    leave-from-class="opacity-100"
+    leave-to-class="opacity-0"
+  >
+    <div
+      v-if="isMenuOpen"
+      class="fixed inset-0 bg-black/20 backdrop-blur-sm md:hidden"
+      style="z-index: 1"
+      @click="closeMenu"
+    />
+  </Transition>
 </template>
 
 <style scoped>

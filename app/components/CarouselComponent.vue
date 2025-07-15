@@ -176,20 +176,12 @@ const breakpoints = {
     width: 40px;
     height: 40px;
   }
-
-  .logo-slide {
-    height: 60px;
-  }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
   .logo-container {
     width: 50px;
     height: 50px;
-  }
-
-  .logo-slide {
-    height: 70px;
   }
 }
 </style>
